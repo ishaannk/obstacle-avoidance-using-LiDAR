@@ -1,0 +1,32 @@
+
+
+obstacle_avoidance_node:
+  ros__parameters:
+    # Minimum distance threshold for obstacle detection (meters)
+    # Adjust this based on your tractor's stopping distance and speed
+    # Recommended: 0.5-1.5m for tractors, 0.3-0.5m for small robots
+    min_distance_threshold: 0.5
+    
+    # Field of View settings (degrees)
+    # 0-120 degrees covers the front area of the tractor
+    fov_start_angle: 0.0
+    fov_end_angle: 120.0
+    
+    # Topic to subscribe to for laser scan data
+    scan_topic: '/scan'
+    
+
+    min_obstacle_points: 5
+    
+  
+    # Higher values = more stable, but slower response
+    # Recommended: 3-5 for stable detection
+    consecutive_detections: 3
+    
+    # Account for RPLIDAR's angle transformation (M_PI - angle)
+    # Set to false if using a different LiDAR that doesn't transform angles
+    account_rplidar_transform: true
+    
+  
+    # Leave empty [] to not exclude any angles
+    exclude_angle_ranges: []
